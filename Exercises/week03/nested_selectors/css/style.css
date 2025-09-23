@@ -1,0 +1,33 @@
+body {
+  font-family: Georgia, serif;
+  line-height: 1.4;
+  margin: 3em;
+	color: #00CC99;
+}
+
+
+
+/* Step 1: First make all the anchors on the page #FFA7C0 */
+
+a{
+  color:pink
+}
+
+
+/* Step 2: Then make the anchors within the header nav #D16121 */
+
+header> nav a{
+  color:orange
+}
+
+header>nav b{
+  color:red;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/* Step 3: Lastly, make the anchors in the footer nav #FFE540 */
+
+footer nav a {
+  color:black
+}
