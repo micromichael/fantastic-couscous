@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 中文：从上级目录引用 CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparkly Cry — Anya Face Glossary</title>
+  <meta name="description" content="Sparkly cry gallery with keyboard navigation.">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- 中文：顶部小型芯片导航 -->
+  <header class="site-header">
+    <h1 class="page-title">Sparkly Cry</h1>
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="smug.html">Smug</a>
+      <a href="panic.html">Panic</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 中文：大图区域（限制高度，保证下方预览可见） -->
+    <figure class="hero-figure" aria-live="polite">
+      <img id="heroImage" src="../img/cry_01.jpg" alt="Anya crying sparkly tears">
+      <figcaption id="heroCaption" class="hero-caption">
+        Tears with theatrical lighting built in
+      </figcaption>
+    </figure>
+
+    <!-- 中文：预览缩略图栏（当前不透明，其他半透明） -->
+    <section class="gallery" aria-label="Image gallery">
+      <div class="thumbs" role="listbox" aria-label="Sparkly Cry variations">
+        <button class="thumb is-active" role="option" aria-selected="true" data-index="0">
+          <img src="../img/cry_01.jpg" alt="Preview 1">
+        </button>
+        <button class="thumb" role="option" aria-selected="false" data-index="1">
+          <img src="../img/cry_02.jpg" alt="Preview 2">
+        </button>
+        <button class="thumb" role="option" aria-selected="false" data-index="2">
+          <img src="../img/cry_03.jpg" alt="Preview 3">
+        </button>
+        <button class="thumb" role="option" aria-selected="false" data-index="3">
+          <img src="../img/cry_04.jpg" alt="Preview 4">
+        </button>
+      </div>
+      <p class="kbd-hint" aria-hidden="true">Use ← → to navigate</p>
+    </section>
+  </main>
+
+  <!-- 中文：轻量脚本：切换主图、更新 aria-selected 与缩略图透明度、支持键盘 -->
+  <script>
+    // 中文：图片数据（大图路径与说明文字）
+    const images = [
+      {src:"../img/cry_01.jpg",alt:"Sparkly Cry 1",caption:"lol 1"},
+      {src:"../img/cry_02.jpg",alt:"Sparkly Cry 2",caption:"lol 2"},
+      {src:"../img/cry_03.jpg",alt:"Sparkly Cry 3",caption:"lol 3"},
+      {src:"../img/cry_04.jpg",alt:"Sparkly Cry 4",caption:"lol 4"}
+    ];
+
+    // 中文：缓存 DOM
+    const heroImg = document.getElementById("heroImage");
+    const heroCap = document.getElementById("heroCaption");
+    const thumbs = Array.from(document.querySelectorAll(".thumb"));
+    let currentIndex = 0;
+
+    // 中文：展示函数
+    function showImage(i, moveFocus = false){
+      if(i < 0) i = images.length - 1;
+      if(i >= images.length) i = 0;
+      currentIndex = i;
+
+      const item = images[i];
+      heroImg.src = item.src;
+      heroImg.alt = item.alt;
+      heroCap.textContent = item.caption;
+
+      // 中文：更新缩略图选中与透明度（is-active 控制不透明）
+      thumbs.forEach((btn, index) => {
+        const active = index === i;
+        btn.setAttribute("aria-selected", active ? "true" : "false");
+        btn.classList.toggle("is-active", active);
+      });
+
+      // 中文：需要时焦点移至当前缩略图（键盘左右切换可见）
+      if (moveFocus) thumbs[i].focus();
+    }
+
+    // 中文：缩略图点击与键盘激活
+    thumbs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        showImage(parseInt(btn.dataset.index, 10));
+      });
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          showImage(parseInt(btn.dataset.index, 10));
+        }
+      });
+    });
+
+    // 中文：方向键左右切换
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft")  showImage(currentIndex - 1, true);
+      if (e.key === "ArrowRight") showImage(currentIndex + 1, true);
+    });
+
+    // 中文：初始化
+    showImage(0);
+  </script>
+</body>
+</html>

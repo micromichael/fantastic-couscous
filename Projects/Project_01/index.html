@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anya Face Glossary</title>
+  <meta name="description" content="Mood buttons linking to different Anya reaction pages with click counts.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+<header class="site-header">
+  <h1 class="site-title">Anya Face Glossary</h1>
+
+  <nav class="primary-nav" aria-label="Primary">
+
+    <a class="nav-button" data-key="cry" href="reactions/cry.html">
+      <span class="btn-en">Sparkly Cry</span>
+      <span class="btn-zh">哭哭</span>
+      <span class="btn-count">0</span>
+    </a>
+
+    <a class="nav-button" data-key="smug" href="reactions/smug.html">
+      <span class="btn-en">Smug</span>
+      <span class="btn-zh">得意</span>
+      <span class="btn-count">0</span>
+    </a>
+
+    <a class="nav-button" data-key="panic" href="reactions/panic.html">
+      <span class="btn-en">Panic</span>
+      <span class="btn-zh">慌张</span>
+      <span class="btn-count">0</span>
+    </a>
+
+    <a class="nav-button" data-key="heh" href="reactions/heh.html">
+      <span class="btn-en">Heh</span>
+      <span class="btn-zh">嘿嘿</span>
+      <span class="btn-count">0</span>
+    </a>
+
+    <a class="nav-button" data-key="focus" href="reactions/focus.html">
+      <span class="btn-en">Focus Mode</span>
+      <span class="btn-zh">专注</span>
+      <span class="btn-count">0</span>
+    </a>
+
+  </nav>
+</header>
+
+<script>
+const buttons = document.querySelectorAll(".nav-button");
+
+buttons.forEach(btn => {
+  const key = btn.dataset.key;
+  const countEl = btn.querySelector(".btn-count");
+
+  let saved = localStorage.getItem(`anya_${key}_count`);
+  let count = saved ? parseInt(saved) : 0;
+  countEl.textContent = count;
+
+  btn.addEventListener("click", () => {
+    count++;
+    localStorage.setItem(`anya_${key}_count`, count);
+    countEl.textContent = count;
+    countEl.classList.add("count-bump");
+    setTimeout(() => countEl.classList.remove("count-bump"), 250);
+  });
+});
+</script>
+
+</body>
+</html>

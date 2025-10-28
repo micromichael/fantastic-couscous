@@ -82,7 +82,7 @@ body {
   box-shadow: 0 12px 28px rgba(0,0,0,0.45);
 }
 
-/* 悬停时该列内所有文字统一变黑，保证对比度 */
+/* 悬停时该列内所有文字统一变，保证对比度 */
 .column:hover,
 .column:hover h2,
 .column:hover p,

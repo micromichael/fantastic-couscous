@@ -1,0 +1,268 @@
+/* 中文：全局变量：色彩与排版比例 */
+:root{
+  --bg: #0f0f12;
+  --ink: #e7e7ee;
+  --muted: #a9a9b6;
+  --accent: #8ad0ff;
+  --accent-2: #ffc6e5;
+  --card: #1a1a21;
+
+  /* 中文：排版使用 clamp 创建可伸缩字号 */
+  --step--1: clamp(0.85rem, 0.85rem + 0.2vw, 1rem);
+  --step-0: clamp(1rem, 1rem + 0.4vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.2rem + 0.6vw, 1.5rem);
+  --step-2: clamp(1.6rem, 1.45rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.9rem + 1.6vw, 2.6rem);
+}
+
+/* 中文：基础 reset */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+img{ max-width:100%; height:auto; display:block; }
+a{ color: var(--accent); text-decoration: none; }
+a:focus, button:focus{ outline: 2px solid var(--accent-2); outline-offset: 2px; }
+
+/* 中文：页面背景与字体 */
+body{
+  background: radial-gradient(1000px 700px at 10% 0%, #17171e, var(--bg));
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  font-size: var(--step-0);
+}
+
+/* 中文：头部容器宽度 */
+.site-header{
+  width: min(960px, 92vw);
+  margin: 1.5rem auto 1.5rem;
+  padding: 0 0.5rem;
+}
+
+/* 中文：主标题 */
+.site-title, .page-title{
+  font-size: var(--step-3);
+  letter-spacing: 0.5px;
+  margin: 0.25rem 0 1rem;
+}
+
+/* =========================
+   中文：主页按钮（英文+中文） 
+   ========================= */
+
+/* 中文：主页按钮栅格：桌面三列，中屏两列，小屏单列 */
+.primary-nav{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* 中文：主页按钮本体：整块可点击，垂直居中两行文字 */
+.primary-nav .nav-button{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 150px;
+  padding: 1.25rem 1rem;
+
+  background: linear-gradient(to bottom right, #20202a, var(--card));
+  border: 1px solid #2b2b35;
+  border-radius: 16px;
+
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+
+  transition: transform .22s ease, background .28s ease, box-shadow .28s ease, color .2s ease;
+}
+
+/* 中文：按钮内的英文与中文排版 */
+.primary-nav .nav-button .btn-en{
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: 1.1;
+}
+.primary-nav .nav-button .btn-zh{
+  margin-top: 0.35rem;
+  font-size: var(--step-0);
+  color: var(--muted);
+}
+
+/* 中文：hover / focus 效果：抬升 + 发光 */
+.primary-nav .nav-button:hover,
+.primary-nav .nav-button:focus{
+  transform: translateY(-4px) scale(1.03);
+  background: #c0556c;
+  color: #f4f3f3;
+  box-shadow: 0 10px 24px rgba(138,208,255,0.25);
+}
+.primary-nav .nav-button:focus-visible{
+  outline: 2px solid var(--accent-2);
+  outline-offset: 4px;
+}
+
+/* 中文：计数数字样式（首页按钮用） */
+.btn-count{
+  margin-top: 0.4rem;
+  font-size: var(--step--1);
+  color: var(--accent);
+  opacity: 0.95;
+  transition: transform .2s ease, color .2s ease;
+}
+.count-bump{ transform: scale(1.25); color: #ffffff; }
+
+/* =======================================
+   中文：反应页（reactions）里的小型导航芯片
+   （不带 .nav-button 的链接外观）
+   ======================================= */
+.primary-nav a:not(.nav-button){
+  background: linear-gradient(to bottom right, #20202a, var(--card));
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #2b2b35;
+  transition: transform .15s ease, background .2s ease, color .2s ease;
+}
+.primary-nav a:not(.nav-button):hover{
+  transform: translateY(-2px);
+  background: #23232d;
+  color:#fff;
+}
+
+/* =========================
+   中文：条目页 cry 的大图 + caption
+   限制高度，保证下方的预览栏可见
+   ========================= */
+/* 中文：二级页面的大图不要外框 */
+.hero-figure{
+  width: min(960px, 92vw);
+  margin: 1rem auto 0.5rem;
+  text-align: center;
+}
+
+/* 中文：限制大图高度，且无边框背景 */
+.hero-figure img{
+  display:block;
+  margin: 0 auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  background: none;
+}
+
+/* 中文：说明文字置中，不要框线 */
+.hero-caption{
+  text-align: center;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+}
+
+/* =========================
+   中文：cry 页的 gallery 预览缩略图栏
+   - 当前选中缩略图不透明
+   - 其它缩略图半透明，hover/focus 提升
+   ========================= */
+.gallery{
+  width: min(960px, 92vw);
+  margin: 0.5rem auto 0;       /* 中文：贴近大图，整体更紧凑 */
+}
+.kbd-hint{
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.thumbs{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;          /* 中文：更紧凑 */
+}
+.thumb{
+  appearance: none;
+  background: #1d1d24;
+  border: 1px solid #2b2b35;
+  border-radius: 10px;
+  padding: 0;
+  cursor: pointer;
+  width: 96px;
+  height: 68px;
+  overflow: hidden;
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.thumb img{
+  display:block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;               /* 中文：默认半透明以弱化非当前缩略图 */
+  transition: opacity .15s ease;
+}
+.thumb.is-active img,
+.thumb[aria-selected="true"] img{
+  opacity: 1;                  /* 中文：当前缩略图不透明，突出 */
+}
+.thumb:hover img,
+.thumb:focus img{
+  opacity: 0.9;                /* 中文：悬停/聚焦时更亮 */
+}
+.thumb:hover,
+.thumb:focus{
+  transform: translateY(-2px);
+  background: #23232d;
+  box-shadow: 0 6px 18px rgba(138,208,255,0.15);
+  outline: none;
+}
+.thumb.is-active,
+.thumb[aria-selected="true"]{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(138,208,255,0.25) inset;
+}
+.thumb:focus-visible{
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
+/* =========================
+   中文：其他反应页 WIP 文案（中间一行带发光）
+   ========================= */
+.wip-wrap{
+  width: min(960px, 92vw);
+  margin: 20vh auto;
+  text-align: center;
+}
+.wip{
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  font-size: var(--step-2);
+  font-weight: 700;
+  color: #ffffff;
+  background: radial-gradient(120% 120% at 50% 50%, #2a2a35, #1a1a22 60%);
+  border-radius: 14px;
+  box-shadow:
+    0 0 24px rgba(138,208,255,0.25),
+    0 0 48px rgba(255,198,229,0.12);
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.35),
+    0 0 14px rgba(138,208,255,0.35);
+}
+
+/* =========================
+   中文：响应式断点
+   ========================= */
+@media (max-width: 900px){
+  .primary-nav{ grid-template-columns: repeat(2, 1fr); }
+  .primary-nav .nav-button{ min-height: 140px; }
+  .hero-figure img{ max-height: 56vh; } /* 中文：中屏再略降，保证预览栏露出 */
+}
+@media (max-width: 560px){
+  .primary-nav{ grid-template-columns: 1fr; }
+  .primary-nav .nav-button{ min-height: 130px; }
+  .hero-figure img{ max-height: 52vh; } /* 中文：小屏也能同时看到大图与预览 */
+}
