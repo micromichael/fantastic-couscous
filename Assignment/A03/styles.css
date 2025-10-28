@@ -1,0 +1,100 @@
+/* 全局与背景 */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: #000;              /* 黑色背景 */
+  color: #b3b3b3;                /* 全局默认灰字 */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+/* 顶部图片 */
+.TopPhoto{
+  margin: 0;
+  padding: 0;
+}
+.TopPhoto img {
+  display: block;
+  width: min(1100px, 92vw);
+  max-width: 100%;
+  margin: 24px auto 8px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  border: 10px solid rgb(104, 100, 100);
+}
+
+/* 标题区域（可选） */
+.page-header {
+  width: min(1100px, 92vw);
+  margin: 0 auto 18px;
+  color: #d9d9d9;          /* 略浅一些，和正文区分 */
+}
+.page-header h1 {
+  margin: 10px 0 4px;
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 700;
+}
+.page-header h3 {
+  margin: 0 0 8px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* 两列布局 */
+.columns {
+  width: min(1100px, 92vw);
+  margin: 0 auto 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 两列 */
+  gap: 22px;
+}
+
+/* 单个列的“白色背景box”样式 */
+.column {
+  background: #fff;                /* 默认白底 */
+  color: #6a6a6a;                  /* 列中文字默认灰色 */
+  border-radius: 16px;             /* 圆角 */
+  padding: clamp(14px, 2.2vw, 24px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+  transition: background-color 220ms ease, color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+/* 标题在白底里也先用灰色以统一 */
+.column h2 {
+  margin: 6px 0 10px;
+  font-size: clamp(18px, 2vw, 22px);
+  color: #6a6a6a;
+  letter-spacing: 0.2px;
+}
+
+/* 段落灰色 */
+.column p {
+  margin: 10px 0 0;
+  color: #6a6a6a;                  /* 明确设置为灰色 */
+}
+
+/* 悬停交互：该列变蓝底、文字全变黑 */
+.column:hover {
+  background: #415c96;            /* 蓝色 */
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+}
+
+/* 悬停时该列内所有文字统一变黑，保证对比度 */
+.column:hover,
+.column:hover h2,
+.column:hover p,
+.column:hover a,
+.column:hover strong,
+.column:hover em {
+  color: rgb(234, 229, 229);
+}
+
+/* 小屏改为单列堆叠 */
+@media (max-width: 820px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
