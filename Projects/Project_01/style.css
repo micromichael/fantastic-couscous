@@ -20,7 +20,12 @@
 html,body{ margin:0; padding:0; }
 img{ max-width:100%; height:auto; display:block; }
 a{ color: var(--accent); text-decoration: none; }
-a:focus, button:focus{ outline: 2px solid var(--accent-2); outline-offset: 2px; }
+
+/* 中文：聚焦样式改为实线 */
+a:focus, button:focus{
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
 
 /* 中文：页面背景与字体 */
 body{
@@ -43,6 +48,33 @@ body{
   font-size: var(--step-3);
   letter-spacing: 0.5px;
   margin: 0.25rem 0 1rem;
+}
+
+/* =========================
+   中文：主页面右上角导航（Wikipedia）
+   ========================= */
+.top-nav{
+  width: min(960px, 92vw);
+  margin: 0.75rem auto 0;
+  text-align: right;
+}
+.wiki-link{
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  font-size: var(--step--1);
+  background: #1d1d24;
+  border: 1px solid #2b2b35;
+  border-radius: 10px;
+  transition: transform .15s ease, background .2s ease;
+  color: var(--ink);
+}
+.wiki-link:hover,
+.wiki-link:focus{
+  background:#292932;
+  transform: translateY(-2px);
+  color:#fff;
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
 }
 
 /* =========================
@@ -94,13 +126,9 @@ body{
 .primary-nav .nav-button:hover,
 .primary-nav .nav-button:focus{
   transform: translateY(-4px) scale(1.03);
-  background: #c0556c;
-  color: #f4f3f3;
+  background: #292932;
+  color: #ffffff;
   box-shadow: 0 10px 24px rgba(138,208,255,0.25);
-}
-.primary-nav .nav-button:focus-visible{
-  outline: 2px solid var(--accent-2);
-  outline-offset: 4px;
 }
 
 /* 中文：计数数字样式（首页按钮用） */
@@ -132,34 +160,26 @@ body{
 
 /* =========================
    中文：条目页 cry 的大图 + caption
-   限制高度，保证下方的预览栏可见
+   限制高度，保证下方的预览栏可见；无外框
    ========================= */
-/* 中文：二级页面的大图不要外框 */
 .hero-figure{
   width: min(960px, 92vw);
   margin: 1rem auto 0.5rem;
   text-align: center;
 }
-
-/* 中文：限制大图高度，且无边框背景 */
 .hero-figure img{
   display:block;
   margin: 0 auto;
   width: auto;
   max-width: 100%;
-  max-height: 60vh;
-  object-fit: contain;
-  background: none;
+  max-height: 60vh;            /* 中文：限制大图高度，避免压住预览栏 */
+  object-fit: contain;         /* 中文：等比缩放，留出上下余白 */
 }
-
-/* 中文：说明文字置中，不要框线 */
 .hero-caption{
   text-align: center;
   margin-top: 0.4rem;
   color: var(--muted);
   font-size: var(--step--1);
-}
-
 }
 
 /* =========================
@@ -169,7 +189,7 @@ body{
    ========================= */
 .gallery{
   width: min(960px, 92vw);
-  margin: 0.5rem auto 0;       /* 中文：贴近大图，整体更紧凑 */
+  margin: 0.5rem auto 0;
 }
 .kbd-hint{
   margin: 0.5rem 0 0;
@@ -182,7 +202,7 @@ body{
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-top: 0.5rem;          /* 中文：更紧凑 */
+  margin-top: 0.5rem;
 }
 .thumb{
   appearance: none;
@@ -219,18 +239,19 @@ body{
   box-shadow: 0 6px 18px rgba(138,208,255,0.15);
   outline: none;
 }
+/* 中文：缩略图键盘可视焦点 → 实线 */
+.thumb:focus-visible{
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
 .thumb.is-active,
 .thumb[aria-selected="true"]{
   border-color: var(--accent);
   box-shadow: 0 0 0 2px rgba(138,208,255,0.25) inset;
 }
-.thumb:focus-visible{
-  outline: 2px solid var(--accent-2);
-  outline-offset: 3px;
-}
 
 /* =========================
-   中文：其他反应页 WIP 文案（中间一行带发光）
+   中文：其他反应页 WIP 文案（仅字光，无盒子）
    ========================= */
 .wip-wrap{
   width: min(960px, 92vw);
@@ -238,19 +259,13 @@ body{
   text-align: center;
 }
 .wip{
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
   font-size: var(--step-2);
   font-weight: 700;
   color: #ffffff;
-  background: radial-gradient(120% 120% at 50% 50%, #2a2a35, #1a1a22 60%);
-  border-radius: 14px;
-  box-shadow:
-    0 0 24px rgba(138,208,255,0.25),
-    0 0 48px rgba(255,198,229,0.12);
   text-shadow:
-    0 0 6px rgba(255,255,255,0.35),
-    0 0 14px rgba(138,208,255,0.35);
+    0 0 10px rgba(255,255,255,0.45),
+    0 0 26px rgba(138,208,255,0.3),
+    0 0 42px rgba(255,198,229,0.2);
 }
 
 /* =========================

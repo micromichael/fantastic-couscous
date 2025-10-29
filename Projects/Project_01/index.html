@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- 中文：基础页面设置与样式 -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anya Face Glossary</title>
@@ -9,6 +10,13 @@
   <link rel="icon" href="favicon.ico">
 </head>
 <body>
+
+<!-- 中文：右上角 Wikipedia 导航 -->
+<nav class="top-nav">
+  <a class="wiki-link" href="https://en.wikipedia.org/wiki/Anya_Forger" target="_blank" rel="noopener noreferrer">
+    Wikipedia ↗
+  </a>
+</nav>
 
 <header class="site-header">
   <h1 class="site-title">Anya Face Glossary</h1>
@@ -41,7 +49,7 @@
 
     <a class="nav-button" data-key="focus" href="reactions/focus.html">
       <span class="btn-en">Focus Mode</span>
-      <span class="btn-zh">专注</span>
+      <span class="btn-zh">专注模式</span>
       <span class="btn-count">0</span>
     </a>
 
@@ -49,12 +57,11 @@
 </header>
 
 <script>
+/* 中文：主页按钮点击计数（持久化） */
 const buttons = document.querySelectorAll(".nav-button");
-
 buttons.forEach(btn => {
   const key = btn.dataset.key;
   const countEl = btn.querySelector(".btn-count");
-
   let saved = localStorage.getItem(`anya_${key}_count`);
   let count = saved ? parseInt(saved) : 0;
   countEl.textContent = count;
