@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Architecture Case Garden</title>
+  <title>Architecture Case Study</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,102 +11,79 @@
   <nav class="site-nav" aria-label="Main navigation">
     <a href="index.html" class="logo">Architecture Case Garden</a>
     <ul class="nav-links">
-      <li><a href="type/aviation.html">Aviation</a></li>
-      <li><a href="type/train-station.html">Train Station</a></li>
-      <li><a href="type/stadium.html">Stadium</a></li>
-      <li><a href="type/office.html">Office</a></li>
-      <li><a href="type/hotel.html">Hotel</a></li>
+      <li><a href="type/aviation/index.html">Aviation</a></li>
+      <li><a href="type/train_station/index.html">Train Station</a></li>
+      <li><a href="type/stadium/index.html">Stadium</a></li>
+      <li><a href="type/office/index.html">Office</a></li>
+      <li><a href="type/hotel/index.html">Hotel</a></li>
     </ul>
   </nav>
 </header>
 
 <main id="top">
   <section class="hero">
-    <h1>Architecture Case Study Documentation</h1>
-    <p>
-      A concise index of architecture case studies, organised by programme.
-      Enter a type to view individual projects and their drawings.
-    </p>
+    <h1>Architecture <br>Case Study</h1>
   </section>
 
   <section class="category-grid" aria-label="Case study types">
     <!-- Aviation -->
     <article class="category-card">
-      <a href="type/aviation.html" class="category-link">
+      <a href="type/aviation/index.html" class="category-link">
         <figure class="category-figure">
-          <img src="images/aviation-cover.jpg"
+          <img src="img/Aviation/00_aviation_cover.jpg"
                alt="Interior of a light-filled airport terminal with long-span roof">
           <figcaption class="category-name">Aviation</figcaption>
         </figure>
-        <p class="category-description">
-          Terminals, airside circulation, and infrastructural joints.
-        </p>
       </a>
     </article>
 
     <!-- Train Station -->
     <article class="category-card">
-      <a href="type/train-station.html" class="category-link">
+      <a href="type/train_station/index.html" class="category-link">
         <figure class="category-figure">
-          <img src="images/train-station-cover.jpg"
+          <img src="img/Train_station/00_train_station_cover.jpg"
                alt="Train station hall with vaulted roof and platforms">
           <figcaption class="category-name">Train Station</figcaption>
         </figure>
-        <p class="category-description">
-          Platforms, concourses and urban thresholds between rail and city.
-        </p>
       </a>
     </article>
 
     <!-- Stadium -->
     <article class="category-card">
-      <a href="type/stadium.html" class="category-link">
+      <a href="type/stadium/index.html" class="category-link">
         <figure class="category-figure">
-          <img src="images/stadium-cover.jpg"
-               alt="Night view of stadium bowl with illuminated structure">
+          <img src="img/Stadium/00_stadium_cover.jpg"
+               alt="Exterior view of stadium with structural roof">
           <figcaption class="category-name">Stadium</figcaption>
         </figure>
-        <p class="category-description">
-          Bowls, roofs and the choreography of crowds.
-        </p>
       </a>
     </article>
 
     <!-- Office -->
     <article class="category-card">
-      <a href="type/office.html" class="category-link">
+      <a href="type/office/index.html" class="category-link">
         <figure class="category-figure">
-          <img src="images/office-cover.jpg"
+          <img src="img/Office/00_office_cover.jpeg"
                alt="Office atrium with open stair and workspaces">
           <figcaption class="category-name">Office Buildings</figcaption>
         </figure>
-        <p class="category-description">
-          Cores, floorplates and everyday work ecologies.
-        </p>
       </a>
     </article>
 
     <!-- Hotel -->
     <article class="category-card">
-      <a href="type/hotel.html" class="category-link">
+      <a href="type/hotel/index.html" class="category-link">
         <figure class="category-figure">
-          <img src="images/hotel-cover.jpg"
+          <img src="img/Hotel/00_hotel_cover.jpeg"
                alt="Hotel lobby with soft lighting and seating">
           <figcaption class="category-name">Hotel</figcaption>
         </figure>
-        <p class="category-description">
-          Lobbies, rooms and the architecture of stay.
-        </p>
       </a>
     </article>
   </section>
 </main>
 
-<footer class="site-footer">
-  <p>Architecture Case Garden · student documentation site</p>
-</footer>
-
-<!-- Lightbox (结构在所有页面保持相同，JS 统一控制) -->
+<!-- Lightbox -->
 <div class="lightbox" aria-hidden="true">
   <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Enlarged image viewer">
     <button class="lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
