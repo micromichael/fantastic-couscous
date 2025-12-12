@@ -1,0 +1,89 @@
+/* -----------------------------------------
+   1. Color Palette
+------------------------------------------ */
+:root {
+  --color-primary: #3f709b;
+  --color-secondary: #c6b272;
+  --color-accent: #f52323;
+  --color-neutral: #F2F2F2;
+}
+
+/* -----------------------------------------
+   2. Typography (Google Fonts)
+   Fonts: Poppins & Roboto Slab
+------------------------------------------ */
+body {
+  font-family: 'Gill Sans', sans-serif;
+  background: white;
+  color: #333;
+  padding: 32px;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto Slab', serif;
+}
+
+/* -----------------------------------------
+   3. Type Ramp (4 levels)
+------------------------------------------ */
+.type-xl { font-size: 32px; font-weight: 700; }
+.type-lg { font-size: 24px; font-weight: 600; }
+.type-md { font-size: 18px; font-weight: 500; }
+.type-sm { font-size: 14px; }
+
+/* -----------------------------------------
+   4. Spacing Scale (3 values)
+------------------------------------------ */
+:root {
+  --space-xs: 8px;
+  --space-m: 16px;
+  --space-xl: 32px;
+}
+
+section {
+  margin-bottom: var(--space-xl);
+}
+
+/* -----------------------------------------
+   Utility: Color Swatches
+------------------------------------------ */
+.color-grid {
+  display: flex;
+  gap: var(--space-m);
+}
+
+.color-swatch {
+  padding: var(--space-m);
+  width: 120px;
+  height: 80px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.color-primary { background: var(--color-primary); }
+.color-secondary { background: var(--color-secondary); }
+.color-accent { background: var(--color-accent); }
+.color-neutral { background: var(--color-neutral); color: #333; }
+
+/* -----------------------------------------
+   5. Component: Button
+------------------------------------------ */
+.primary-btn {
+  background: var(--color-primary);
+  padding: var(--space-m) var(--space-xl);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+}
+
+.primary-btn:hover {
+  background: #3a7ac2;
+}
