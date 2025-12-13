@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="One Hundred Famous Views of Edo (名所江戸百景) — 119 ukiyo-e prints by Hiroshige. Filter by season, sort, and view full-screen." />
+  <meta property="og:title" content="One Hundred Famous Views of Edo" />
+  <meta property="og:description" content="A photo library of 119 ukiyo-e prints by Hiroshige, with season filters and full-screen viewing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/edo/cover.jpg" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>One Hundred Famous Views of Edo</title>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <h1>One Hundred Famous Views of Edo</h1>
+      <p class="subtitle">Ukiyo-e photo library (119 prints) — seasons, sort, full-screen navigation.</p>
+    </div>
+
+    <nav class="header-right" aria-label="Top navigation">
+      <a class="text-link" href="#about" id="aboutOpen" aria-haspopup="dialog" aria-controls="aboutDialog">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Collection controls">
+      <div class="control-group" aria-label="Filter by season">
+        <span class="control-label">Filter:</span>
+        <a href="#" class="text-link filter-link is-active" data-filter="all" aria-current="true">All</a>
+        <a href="#" class="text-link filter-link" data-filter="spring">Spring</a>
+        <a href="#" class="text-link filter-link" data-filter="summer">Summer</a>
+        <a href="#" class="text-link filter-link" data-filter="autumn">Autumn</a>
+        <a href="#" class="text-link filter-link" data-filter="winter">Winter</a>
+      </div>
+
+      <div class="control-group" aria-label="Sort">
+        <span class="control-label">Sort:</span>
+        <a href="#" class="text-link sort-link is-active" data-sort="order" aria-current="true">Order</a>
+        <a href="#" class="text-link sort-link" data-sort="random">Random</a>
+
+        <span class="status-line" id="statusLine" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="legend" aria-label="Season legend">
+      <div class="legend-item"><span class="dot spring" aria-hidden="true"></span><span>Spring (001–042)</span></div>
+      <div class="legend-item"><span class="dot summer" aria-hidden="true"></span><span>Summer (043–072)</span></div>
+      <div class="legend-item"><span class="dot autumn" aria-hidden="true"></span><span>Autumn (073–098)</span></div>
+      <div class="legend-item"><span class="dot winter" aria-hidden="true"></span><span>Winter (099–119)</span></div>
+    </section>
+
+    <section aria-label="Ukiyo-e gallery">
+      <div id="gallery" class="gallery" role="list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="mono">Keyboard in full-screen: ← → to navigate, Esc to close.</p>
+  </footer>
+
+  <!-- Fullscreen viewer (black, minimal; shows number + season) -->
+  <div class="viewer" id="viewer" hidden aria-hidden="true">
+    <div class="viewer-scrim" id="viewerScrim" aria-hidden="true"></div>
+    <img id="viewerImg" alt="" />
+    <div class="viewer-id mono" id="viewerId"></div>
+  </div>
+
+  <!-- About Dialog (clean) -->
+  <div class="modal" id="aboutDialog" role="dialog" aria-modal="true" aria-label="About this collection" hidden>
+    <div class="modal-scrim" data-close="true" aria-hidden="true"></div>
+    <div class="about-content" role="document">
+      <div class="about-topline">
+        <span class="mono">About</span>
+        <a href="#" class="text-link" id="aboutClose" aria-label="Close about">Close</a>
+      </div>
+
+      <div class="about-body">
+        <figure class="about-figure">
+          <img src="img/edo/cover.jpg" alt="Cover image for One Hundred Famous Views of Edo" loading="lazy" />
+        </figure>
+
+        <div class="about-text">
+          <div class="about-description">
+            <p>
+              One Hundred Famous Views of Edo is a series of 119 ukiyo-e prints begun and largely completed by the Japanese artist Hiroshige.
+            </p>
+            <p>
+              『名所江戸百景』は、浮世絵師の歌川広重が安政3年（1856年）2月から同5年（1858年）10月にかけて制作した連作浮世絵名所絵である。
+            </p>
+          </div>
+
+          <p class="mono credit credit-last">Designer: Michael BI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
